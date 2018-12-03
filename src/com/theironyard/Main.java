@@ -31,11 +31,11 @@ public class Main {
         planets.add(temp);
 
         tempMoon = new HeavenlyBody("Deimos", 1.3);
-        solarSystem.put(temp.getName(), tempMoon);//temp is still Mars
+        solarSystem.put(tempMoon.getName(), tempMoon);//temp is still Mars
         temp.addMoon(tempMoon);
 
         tempMoon = new HeavenlyBody("Phobos", 0.3);
-        solarSystem.put(temp.getName(), tempMoon);//temp is still Mars
+        solarSystem.put(tempMoon.getName(), tempMoon);//temp is still Mars
         temp.addMoon(tempMoon);
 
         temp = new HeavenlyBody("Jupiter", 4332);
@@ -79,10 +79,20 @@ public class Main {
             System.out.println("\t" + planet.getName());
         }
 
-        HeavenlyBody body = solarSystem.get("Jupiter");
+        HeavenlyBody body = solarSystem.get("Mars");
         System.out.println("Moons of " + body.getName());
         for(HeavenlyBody jupiterMoon : body.getSatellites()) {
             System.out.println("\t" + jupiterMoon.getName());
+        }
+
+        Set<HeavenlyBody> moons = new HashSet<>();
+        for(HeavenlyBody planet : planets) {
+            moons.addAll(planet.getSatellites());
+        }
+
+        System.out.println("All Moons");
+        for(HeavenlyBody moon : moons) {
+            System.out.println("\t" + moon.getName());
         }
 
 
