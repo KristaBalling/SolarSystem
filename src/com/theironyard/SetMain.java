@@ -10,7 +10,7 @@ public class SetMain {
         Set<Integer> squares = new HashSet<>();
         Set<Integer> cubes = new HashSet<>();
 
-        for(int i=1; i <= 100; i++) {
+        for (int i = 1; i <= 100; i++) {
             squares.add(i * i);
             cubes.add(i * i * i);
         }
@@ -24,7 +24,7 @@ public class SetMain {
         intersection.retainAll(cubes);
         System.out.println("Intersection contains " + intersection.size() + " elements.");
 
-        for(int i : intersection) {
+        for (int i : intersection) {
             System.out.println(i + "is the square of " + Math.sqrt(i) + " and the cube of " + Math.cbrt(i));
         }
 
@@ -33,8 +33,39 @@ public class SetMain {
         String[] arrayWords = sentence.split(" ");
         words.addAll(Arrays.asList(arrayWords));
 
-        for(String s : words) {
+        for (String s : words) {
             System.out.println(s);
         }
+
+        Set<String> nature = new HashSet<>();
+        Set<String> divine = new HashSet<>();
+        String[] natureWords = {"all", "nature", "is", "but", "art", "unknown", "to", "thee"};
+        nature.addAll(Arrays.asList(natureWords));
+
+        String[] divineWords = {"to", "err", "is", "human", "to", "forgive", "divine"};
+        divine.addAll(Arrays.asList(divineWords));
+
+        System.out.println("nature - divine:");
+        Set<String> diff1 = new HashSet<>(nature);
+        diff1.removeAll(divine);
+        printSet(diff1);
+
+
+        System.out.println("divine - nature:");
+        Set<String> diff2 = new HashSet<>(divine);
+        diff2.removeAll(nature);
+        printSet(diff2);
+
     }
-}
+
+        private static void printSet(Set<String> set) {
+            System.out.println("\t");
+            for(String s : set) {
+                System.out.print(s + " ");
+            }
+            System.out.println();
+        }
+
+
+    }
+
